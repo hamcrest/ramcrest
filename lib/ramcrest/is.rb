@@ -23,7 +23,6 @@ module Ramcrest
         "is <#{@expected}>"
       end
 
-      private
       include Ramcrest::Match
     end
   end

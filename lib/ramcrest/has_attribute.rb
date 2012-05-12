@@ -30,11 +30,9 @@ module Ramcrest
         "an object with an attribute named '#{@attribute_name}' and value #{@value_matcher.description}"
       end
 
-      private
       include Ramcrest::Match
     end
 
-    private
     include Ramcrest::Anything
   end
 end

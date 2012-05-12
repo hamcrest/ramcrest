@@ -15,7 +15,6 @@ module Ramcrest
         "anything"
       end
 
-      private
       include Ramcrest::Match
     end
   end
