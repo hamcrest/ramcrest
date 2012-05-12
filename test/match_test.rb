@@ -7,11 +7,11 @@ describe Ramcrest::Match do
   end
 
   it "an unsuccessful match is equivalent to false" do
-    Ramcrest::Match.mismatched("description").matched?.must_equal false
+    Ramcrest::Match.mismatch("description").matched?.must_equal false
   end
 
   it "an unsuccessful match has a description" do
-    Ramcrest::Match.mismatched("description").description.must_equal "description"
+    Ramcrest::Match.mismatch("description").description.must_equal "description"
   end
 
   it "a successful match has no description" do

@@ -15,7 +15,7 @@ module Ramcrest
         if @expected == actual
           Ramcrest::Match.success
         else
-          Ramcrest::Match.mismatched("was <#{actual}>")
+          Ramcrest::Match.mismatch("was <#{actual}>")
         end
       end
     end

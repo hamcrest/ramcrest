@@ -6,7 +6,7 @@ module Ramcrest
       Match.new(true, nil)
     end
 
-    def self.mismatched(description) 
+    def self.mismatch(description) 
       Match.new(false, description)
     end
 

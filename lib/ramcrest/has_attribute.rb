@@ -15,7 +15,7 @@ module Ramcrest
         if actual.respond_to?(@attribute_name)
           return Ramcrest::Match.success
         else 
-          return Ramcrest::Match.mismatched("object <#{actual}> was missing attribute '#{@attribute_name}'")
+          return Ramcrest::Match.mismatch("object <#{actual}> was missing attribute '#{@attribute_name}'")
         end
       end
 
