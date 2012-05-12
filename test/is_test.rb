@@ -15,4 +15,8 @@ describe Ramcrest::Is do
   it "describes the object that was seen when it mismatches" do
     is(1).matches?(2).description.must_equal "was <2>" 
   end
+
+  it "describes itself" do
+    is(1).description.must_equal "is <1>" 
+  end
 end

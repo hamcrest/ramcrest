@@ -18,6 +18,10 @@ module Ramcrest
           Ramcrest::Match.mismatch("was <#{actual}>")
         end
       end
+
+      def description
+        "is <#{@expected}>"
+      end
     end
   end
 end
