@@ -19,7 +19,7 @@ module Ramcrest
         end
       end
 
-      def describe
+      def description
         "an object with an attribute named '#{@attribute_name}'"
       end
     end

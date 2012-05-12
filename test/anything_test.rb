@@ -9,7 +9,7 @@ describe Ramcrest::Anything do
   end
 
   it "describes itself" do
-    anything().describe.must_equal "anything"
+    anything().description.must_equal "anything"
   end
 end
 

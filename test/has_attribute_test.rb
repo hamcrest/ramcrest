@@ -24,7 +24,7 @@ describe Ramcrest::HasAttribute do
     end
 
     it "describes itself" do
-      has_attribute(:foo).describe.must_equal "an object with an attribute named 'foo'"
+      has_attribute(:foo).description.must_equal "an object with an attribute named 'foo'"
     end
   end
 

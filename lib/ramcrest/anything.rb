@@ -11,7 +11,7 @@ module Ramcrest
         Ramcrest::Match.success
       end
 
-      def describe
+      def description
         "anything"
       end
     end
