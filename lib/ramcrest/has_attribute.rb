@@ -10,7 +10,11 @@ module Ramcrest
       end
 
       def matches?(actual)
-        actual.respond_to?(@attribute_name)
+        if actual.respond_to?(@attribute_name)
+          return [true]
+        else 
+          return [false, "object <#{actual}> was missing attribute '#{@attribute_name}'"]
+        end
       end
 
       def describe
