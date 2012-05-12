@@ -3,7 +3,9 @@ require 'ramcrest/anything'
 
 module Ramcrest
   module HasAttribute
-    def has_attribute(attribute_name, value_matcher = anything())
+    module_function
+
+    def has_attribute(attribute_name, value_matcher = Ramcrest::Anything.anything())
       HasAttribute.new(attribute_name, value_matcher)
     end
 
@@ -32,7 +34,5 @@ module Ramcrest
 
       include Ramcrest::Match
     end
-
-    include Ramcrest::Anything
   end
 end

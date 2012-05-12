@@ -1,5 +1,7 @@
 module Ramcrest
   module Match
+    module_function
+
     def success
       MatchResult.new(true, nil)
     end

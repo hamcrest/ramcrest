@@ -2,6 +2,8 @@ require 'ramcrest/match'
 
 module Ramcrest
   module Is
+    module_function
+
     def is(expected)
       IsMatcher.new(expected)
     end
