@@ -13,15 +13,18 @@ module Ramcrest
 
       def matches?(actual)
         if @expected == actual
-          Ramcrest::Match.success
+          success
         else
-          Ramcrest::Match.mismatch("was <#{actual}>")
+          mismatch("was <#{actual}>")
         end
       end
 
       def description
         "is <#{@expected}>"
       end
+
+      private
+      include Ramcrest::Match
     end
   end
 end

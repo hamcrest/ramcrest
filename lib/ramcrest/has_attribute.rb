@@ -7,10 +7,6 @@ module Ramcrest
       HasAttribute.new(attribute_name, value_matcher)
     end
 
-    private
-
-    include Ramcrest::Anything
-
     class HasAttribute
       def initialize(attribute_name, value_matcher)
         @attribute_name = attribute_name
@@ -21,18 +17,24 @@ module Ramcrest
         if actual.respond_to?(@attribute_name)
           match = @value_matcher.matches?(actual.send(@attribute_name))
           if match.matched?
-            return Ramcrest::Match.success
+            return success
           else
-            return Ramcrest::Match.mismatch("object <#{actual}> attribute '#{@attribute_name}' #{match.description}")
+            return mismatch("object <#{actual}> attribute '#{@attribute_name}' #{match.description}")
           end
         else 
-          return Ramcrest::Match.mismatch("object <#{actual}> was missing attribute '#{@attribute_name}'")
+          return mismatch("object <#{actual}> was missing attribute '#{@attribute_name}'")
         end
       end
 
       def description
         "an object with an attribute named '#{@attribute_name}' and value #{@value_matcher.description}"
       end
+
+      private
+      include Ramcrest::Match
     end
+
+    private
+    include Ramcrest::Anything
   end
 end

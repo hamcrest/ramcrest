@@ -8,12 +8,15 @@ module Ramcrest
 
     class AnythingMatcher
       def matches?(actual)
-        Ramcrest::Match.success
+        success
       end
 
       def description
         "anything"
       end
+
+      private
+      include Ramcrest::Match
     end
   end
 end
