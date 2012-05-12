@@ -1,3 +1,5 @@
+require 'ramcrest/match'
+
 module Ramcrest
   module HasAttribute
     def has_attribute(attribute_name)
@@ -11,9 +13,9 @@ module Ramcrest
 
       def matches?(actual)
         if actual.respond_to?(@attribute_name)
-          return [true]
+          return Ramcrest::Match.success
         else 
-          return [false, "object <#{actual}> was missing attribute '#{@attribute_name}'"]
+          return Ramcrest::Match.mismatched("object <#{actual}> was missing attribute '#{@attribute_name}'")
         end
       end
 

@@ -8,19 +8,19 @@ describe Ramcrest::HasAttribute do
     it "matches an object with the attribute" do
       obj = an_object_with_attribute(:foo)
 
-      has_attribute(:foo).matches?(obj)[0].must_equal true
+      has_attribute(:foo).matches?(obj).matched?.must_equal true
     end
 
     it "does not match an object that does not have the attribute" do
       obj = an_object_with_attribute(:different)
 
-      has_attribute(:foo).matches?(obj)[0].must_equal false
+      has_attribute(:foo).matches?(obj).matched?.must_equal false
     end
 
     it "describes why it does not match an object that is missing the attribute" do
       obj = an_object_with_attribute(:different)
 
-      has_attribute(:foo).matches?(obj)[1].must_equal "object <#{obj}> was missing attribute 'foo'"
+      has_attribute(:foo).matches?(obj).description.must_equal "object <#{obj}> was missing attribute 'foo'"
     end
 
     it "describes itself" do

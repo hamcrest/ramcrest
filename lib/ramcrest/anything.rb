@@ -1,3 +1,5 @@
+require 'ramcrest/match'
+
 module Ramcrest
   module Anything
     def anything
@@ -6,7 +8,7 @@ module Ramcrest
 
     class AnythingMatcher
       def matches?(actual)
-        true
+        Ramcrest::Match.success
       end
 
       def describe
