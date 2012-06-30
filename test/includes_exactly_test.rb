@@ -16,7 +16,12 @@ describe Ramcrest::IncludesExactly do
 
   it "does not match when the elements are out of order" do
     assert_that includes_exactly(is(1), is(2)),
-      a_matcher_that_mismatches([2, 1], "an enumerable of [2, 1]")
+      a_matcher_that_mismatches([2, 1], "an enumerable that does not include [is <1>, is <2>]. Enumerable included [2, 1]")
+  end
+
+  it "does not match when there is an unexpected element" do
+    assert_that includes_exactly(is(1), is(2)),
+      a_matcher_that_mismatches([1, 3], "an enumerable that does not include [is <2>]. Enumerable included [1, 3]")
   end
 
   it "does not match when there are fewer elements than expected" do

@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/base_enumerable_matcher'
 
 module Ramcrest
   module IncludesExactly
@@ -9,32 +9,18 @@ module Ramcrest
       IncludesExactlyMatcher.new(expected_matchers)
     end
 
-    class IncludesExactlyMatcher
-      include Ramcrest::Match
-
+    class IncludesExactlyMatcher < Ramcrest::Enumerable::BaseEnumerableMatcher
       def initialize(expected)
-        @expected = expected
+        super("including exactly", expected)
       end
 
-      def matches?(actual)
-        if actual.size != @expected.size
-          mismatch("an enumerable of [#{actual.join(', ')}] which is the wrong size")
-        elsif all_match_expected?(actual)
-          success
-        else
-          mismatch("an enumerable of [#{actual.join(', ')}]")
+    protected
+
+      def unmatched_expectations_from(actual)
+        unmatched = actual.zip(@expected).drop_while do |pair|
+          pair[1].matches?(pair[0]).matched?
         end
-      end
-
-      def description
-        descriptions_of_expecteds = @expected.collect(&:description)
-        "an enumerable including exactly [#{descriptions_of_expecteds.join(', ')}]"
-      end
-
-    private
-
-      def all_match_expected?(actual)
-        actual.zip(@expected).all? { |pair| pair[1].matches?(pair[0]).matched? }
+        unmatched.collect { |pair| pair[1] }
       end
     end
   end
