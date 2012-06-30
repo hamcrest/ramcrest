@@ -2,35 +2,31 @@ require 'ramcrest/match'
 
 module Ramcrest
   module Is
-    def self.to_matcher(possible_matcher)
-      return possible_matcher if Ramcrest.is_matcher?(possible_matcher)
-      Ramcrest::Is.is(possible_matcher)
-    end
-
   module_function
 
     def is(expected)
-      IsMatcher.new(expected)
+      IsMatcher.new(Ramcrest::EqualTo.to_matcher(expected))
     end
 
     class IsMatcher
+      include Ramcrest::Match
+
       def initialize(expected)
         @expected = expected
       end
 
       def matches?(actual)
-        if @expected == actual
+        match = @expected.matches?(actual)
+        if match.matched?
           success
         else
-          mismatch("was <#{actual}>")
+          mismatch("was <#{match.description}>")
         end
       end
 
       def description
-        "is <#{@expected}>"
+        "is <#{@expected.description}>"
       end
-
-      include Ramcrest::Match
     end
   end
 end

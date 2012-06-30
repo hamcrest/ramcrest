@@ -1,5 +1,6 @@
 module Ramcrest
   require 'ramcrest/minitest_assert'
+  require 'ramcrest/equal_to'
   require 'ramcrest/is'
   require 'ramcrest/aint'
   require 'ramcrest/anything'
