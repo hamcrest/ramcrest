@@ -6,6 +6,7 @@ module Ramcrest
   require 'ramcrest/anything'
   require 'ramcrest/has_attribute'
   require 'ramcrest/includes_exactly'
+  require 'ramcrest/includes_in_any_order_exactly'
   require 'ramcrest/such_that'
   require 'ramcrest/matcher_matcher'
 
