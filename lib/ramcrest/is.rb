@@ -5,10 +5,10 @@ module Ramcrest
   module_function
 
     def is(expected)
-      IsMatcher.new(Ramcrest::EqualTo.to_matcher(expected))
+      Matcher.new(Ramcrest::EqualTo.to_matcher(expected))
     end
 
-    class IsMatcher
+    class Matcher
       include Ramcrest::Match
 
       def initialize(expected)
