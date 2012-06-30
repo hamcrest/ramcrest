@@ -4,10 +4,10 @@ module Ramcrest
   module Aint
   module_function
     def aint(matcher)
-      AintMatcher.new(Ramcrest::EqualTo.to_matcher(matcher))
+      Matcher.new(Ramcrest::EqualTo.to_matcher(matcher))
     end
 
-    class AintMatcher
+    class Matcher
       include Ramcrest::Match
 
       def initialize(matcher)

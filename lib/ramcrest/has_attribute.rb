@@ -6,10 +6,10 @@ module Ramcrest
     module_function
 
     def has_attribute(attribute_name, value_matcher = Ramcrest::Anything.anything())
-      HasAttribute.new(attribute_name, value_matcher)
+      Matcher.new(attribute_name, value_matcher)
     end
 
-    class HasAttribute
+    class Matcher
       def initialize(attribute_name, value_matcher)
         @attribute_name = attribute_name
         @value_matcher = value_matcher
@@ -23,7 +23,7 @@ module Ramcrest
           else
             return mismatch("object <#{actual}> attribute '#{@attribute_name}' #{match.description}")
           end
-        else 
+        else
           return mismatch("object <#{actual}> was missing attribute '#{@attribute_name}'")
         end
       end
