@@ -3,17 +3,17 @@ module Ramcrest
     module_function
 
     def success
-      MatchResult.new(true, nil)
+      MatchResult.new(true)
     end
 
-    def mismatch(description) 
+    def mismatch(description)
       MatchResult.new(false, description)
     end
 
     class MatchResult
       attr_reader :description
 
-      def initialize(matched, description)
+      def initialize(matched, description = nil)
         @matched = matched
         @description = description
       end
