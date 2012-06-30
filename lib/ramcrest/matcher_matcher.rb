@@ -2,6 +2,7 @@ require 'ramcrest/match'
 
 module Ramcrest
   module MatcherMatcher
+  module_function
     def a_matcher_that_matches(value)
       MatcherThatMatchesMatcher.new(value)
     end
