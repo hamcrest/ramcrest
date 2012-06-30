@@ -5,7 +5,7 @@ module Ramcrest
   module_function
 
     def such_that(description = "<anonymous>", &matcher_block)
-      matcher = Matcher.new(description, matcher_block)
+      Matcher.new(description, matcher_block)
     end
 
     class Matcher
