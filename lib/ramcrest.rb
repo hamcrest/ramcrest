@@ -5,6 +5,7 @@ module Ramcrest
   require 'ramcrest/aint'
   require 'ramcrest/anything'
   require 'ramcrest/has_attribute'
+  require 'ramcrest/includes_exactly'
   require 'ramcrest/matcher_matcher'
 
   def self.is_matcher?(possible_matcher)
