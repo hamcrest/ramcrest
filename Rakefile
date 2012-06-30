@@ -20,6 +20,5 @@ end
 Gem::PackageTask.new(spec).define
 
 Rake::TestTask.new do |t|
-  t.ruby_opts = %w{-rminitest/pride}
   t.pattern = 'test/**/*.rb'
 end

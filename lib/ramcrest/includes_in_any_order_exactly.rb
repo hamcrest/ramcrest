@@ -6,10 +6,10 @@ module Ramcrest
 
     def includes_in_any_order_exactly(*expected)
       expected_matchers = expected.collect(&Ramcrest::EqualTo.method(:to_matcher))
-      IncludesInAnyOrderExactlyMatcher.new(expected_matchers)
+      Matcher.new(expected_matchers)
     end
 
-    class IncludesInAnyOrderExactlyMatcher < Ramcrest::Enumerable::BaseEnumerableMatcher
+    class Matcher < Ramcrest::Enumerable::BaseEnumerableMatcher
       def initialize(expected)
         super("including in any order exactly", expected)
       end
