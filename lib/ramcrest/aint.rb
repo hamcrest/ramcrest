@@ -3,19 +3,19 @@ require 'ramcrest/match'
 module Ramcrest
   module Aint
   module_function
-    def aint(matcher)
-      AintMatcher.new(Ramcrest::EqualTo.to_matcher(matcher))
+    def aint(expected)
+      Matcher.new(Ramcrest::EqualTo.to_matcher(expected))
     end
 
-    class AintMatcher
+    class Matcher
       include Ramcrest::Match
 
-      def initialize(matcher)
-        @matcher = matcher
+      def initialize(expected)
+        @expected = expected
       end
 
       def matches?(actual)
-        match = @matcher.matches?(actual)
+        match = @expected.matches?(actual)
         if match.matched?
           mismatch("<#{actual}>")
         else
@@ -24,7 +24,7 @@ module Ramcrest
       end
 
       def description
-        "not #{@matcher.description}"
+        "not #{@expected.description}"
       end
     end
   end

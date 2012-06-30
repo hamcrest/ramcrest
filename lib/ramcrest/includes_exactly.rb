@@ -6,10 +6,10 @@ module Ramcrest
 
     def includes_exactly(*expected)
       expected_matchers = expected.collect(&Ramcrest::EqualTo.method(:to_matcher))
-      IncludesExactlyMatcher.new(expected_matchers)
+      Matcher.new(expected_matchers)
     end
 
-    class IncludesExactlyMatcher < Ramcrest::Enumerable::BaseEnumerableMatcher
+    class Matcher < Ramcrest::Enumerable::BaseEnumerableMatcher
       def initialize(expected)
         super("including exactly", expected)
       end

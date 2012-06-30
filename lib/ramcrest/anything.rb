@@ -5,10 +5,10 @@ module Ramcrest
     module_function
 
     def anything
-      AnythingMatcher.new
+      Matcher.new
     end
 
-    class AnythingMatcher
+    class Matcher
       def matches?(actual)
         success
       end
