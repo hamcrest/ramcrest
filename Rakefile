@@ -8,7 +8,8 @@ spec = Gem::Specification.new do |s|
   s.authors = ['Andrew Parker']
   s.email = ['aparker42@gmail.com']
   s.homepage = 'https://github.com/zaphod42/ramcrest'
-  s.files = Dir['lib/**/*.rb'] + Dir['test/**/*']
+  s.files = FileList['lib/**/*.rb'].to_a
+  s.test_files = FileList['test/**/*'].to_a
   s.description = <<-EOD
 Ramcrest is an implementation of Hamcrest for Ruby. This grew out of
 my frustration with the lack of flexibility and expressiveness that I
