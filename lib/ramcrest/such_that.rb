@@ -5,10 +5,10 @@ module Ramcrest
   module_function
 
     def such_that(description = "<anonymous>", &matcher_block)
-      matcher = SuchThatMatcher.new(description, matcher_block)
+      Matcher.new(description, matcher_block)
     end
 
-    class SuchThatMatcher
+    class Matcher
       include Ramcrest::Match
 
       def initialize(description, matcher_block)
