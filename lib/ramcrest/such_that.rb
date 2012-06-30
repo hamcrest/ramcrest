@@ -5,14 +5,15 @@ module Ramcrest
   module_function
 
     def such_that(description = "<anonymous>", &matcher_block)
-      SuchThatMatcher.new(description, matcher_block)
+      matcher = SuchThatMatcher.new(description, matcher_block)
     end
 
     class SuchThatMatcher
       include Ramcrest::Match
 
       def initialize(description, matcher_block)
-        self.class.send(:define_method, :matches?, matcher_block)
+        singleton = class << self; self; end
+        singleton.send(:define_method, :matches?, matcher_block)
         @description = description
       end
 

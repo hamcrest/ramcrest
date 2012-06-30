@@ -17,6 +17,14 @@ describe Ramcrest::SuchThat do
     assert_that such_that { |value| }, a_matcher_described_as("such that <anonymous>")
   end
 
+  it "allows for composing with other such_that matchers" do
+    base = such_that { |value| if value > 2 then success else mismatch("no") end }
+    delegating = such_that { |value| base.matches?(value) }
+
+    assert_that delegating, a_matcher_that_matches(3)
+    assert_that delegating, a_matcher_that_mismatches(2, "no")
+  end
+
   it "can have a description provided" do
     assert_that such_that("something is true") { |value| },
       a_matcher_described_as("such that something is true")
