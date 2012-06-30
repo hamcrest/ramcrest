@@ -1,6 +1,5 @@
 require 'minitest/autorun'
-require 'ramcrest/has_attribute'
-require 'ramcrest/is'
+require 'ramcrest'
 
 describe Ramcrest::HasAttribute do
   include Ramcrest::HasAttribute

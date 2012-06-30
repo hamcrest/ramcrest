@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'ramcrest/is'
+require 'ramcrest'
 
 describe Ramcrest::Is do
   include Ramcrest::Is
