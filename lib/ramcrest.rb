@@ -5,6 +5,7 @@ module Ramcrest
   require 'ramcrest/aint'
   require 'ramcrest/anything'
   require 'ramcrest/has_attribute'
+  require 'ramcrest/has_size'
   require 'ramcrest/includes'
   require 'ramcrest/includes_exactly'
   require 'ramcrest/includes_in_any_order_exactly'
