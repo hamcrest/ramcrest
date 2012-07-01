@@ -13,35 +13,9 @@ module Ramcrest
       include Ramcrest::Match
 
       def initialize(expected)
-        @match_type_description = "including"
-        @expected = expected
-      end
-
-      def matches?(actual)
-        if actual.size < @expected.size
-          return mismatch("an enumerable of [#{actual.join(', ')}] which is the wrong size")
-        end
-
-        unmatched = unmatched_expectations_from(actual)
-        if unmatched.empty?
-          success
-        else
-          mismatch("an enumerable that does not include #{describe(unmatched)}. Enumerable included [#{actual.join(', ')}]")
-        end
-      end
-
-      def description
-        "an enumerable #{@match_type_description} #{description_of_expecteds}"
-      end
-
-    private
-
-      def description_of_expecteds
-        describe(@expected)
-      end
-
-      def describe(matchers)
-        "[#{matchers.collect(&:description).join(', ')}]"
+        super("including",
+              expected,
+              Ramcrest::Comparable.greater_or_equal_to(expected.size))
       end
 
     protected

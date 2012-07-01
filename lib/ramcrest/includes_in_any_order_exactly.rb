@@ -11,7 +11,9 @@ module Ramcrest
 
     class Matcher < Ramcrest::Enumerable::BaseEnumerableMatcher
       def initialize(expected)
-        super("including in any order exactly", expected)
+        super("including in any order exactly",
+              expected,
+              Ramcrest::EqualTo.equal_to(expected.size))
       end
 
     protected

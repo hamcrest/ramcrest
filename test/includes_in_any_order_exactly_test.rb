@@ -16,17 +16,17 @@ describe Ramcrest::IncludesInAnyOrderExactly do
 
   it "does not match when there is an unexpected element" do
     assert_that includes_in_any_order_exactly(is(1), is(2)),
-      a_matcher_that_mismatches([1, 3], "an enumerable that does not include [is <2>]. Enumerable included [1, 3]")
+      a_matcher_that_mismatches([1, 3], "an enumerable that does not include [is <2>]. Enumerable was [1, 3].")
   end
 
   it "does not match when there are fewer elements than expected" do
     assert_that includes_in_any_order_exactly(is(1), is(2)),
-      a_matcher_that_mismatches([1], "an enumerable of [1] which is the wrong size")
+      a_matcher_that_mismatches([1], "an enumerable of size 1. Enumerable was [1].")
   end
 
   it "does not match when there are more elements than expected" do
     assert_that includes_in_any_order_exactly(is(1), is(2)),
-      a_matcher_that_mismatches([1, 2, 3], "an enumerable of [1, 2, 3] which is the wrong size")
+      a_matcher_that_mismatches([1, 2, 3], "an enumerable of size 3. Enumerable was [1, 2, 3].")
   end
 
   it "describes itself" do
