@@ -1,8 +1,14 @@
 module Ramcrest
   module Match
 
-
-    module_function
+    def matches?(actual)
+      match = do_match(actual)
+      if match.matched?
+        success
+      else
+        mismatch(mismatch_message(actual, match))
+      end
+    end
 
     def success
       MatchResult.new(true)

@@ -25,15 +25,6 @@ module Ramcrest
       def description
         "not #{@expected.description}"
       end
-
-      def matches?(actual)
-        match = do_match(actual)
-        if match.matched?
-          success
-        else
-          mismatch(mismatch_message(actual, match))
-        end
-      end
     end
   end
 end
