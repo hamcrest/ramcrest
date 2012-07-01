@@ -1,5 +1,7 @@
 module Ramcrest
   module Match
+
+
     module_function
 
     def success
@@ -16,10 +18,16 @@ module Ramcrest
       def initialize(matched, description = nil)
         @matched = matched
         @description = description
+        @negated = false
+      end
+
+      def negate!
+        @negated = true
+        self
       end
 
       def matched?
-        @matched
+        @negated ? !@matched : @matched
       end
     end
   end

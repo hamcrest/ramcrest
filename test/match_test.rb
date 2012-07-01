@@ -19,4 +19,11 @@ describe Ramcrest::Match do
   it "a successful match has no description" do
     assert_nil success.description
   end
+
+  describe "#negate!" do
+    it "inverts the result" do
+      assert_equal false, success.negate!.matched?
+      assert_equal true, mismatch("description").negate!.matched?
+    end
+  end
 end
