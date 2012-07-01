@@ -1,4 +1,4 @@
-Ramcrest: a Ruby port of Hamcrest
+Ramcrest: a Ruby port of Hamcrest [![Build Status](https://secure.travis-ci.org/zaphod42/ramcrest.png?branch=master)](http://travis-ci.org/zaphod42/ramcrest)
 ---------------------------------
 
 Hamcrest is a powerful set of classes and functions that allow building
