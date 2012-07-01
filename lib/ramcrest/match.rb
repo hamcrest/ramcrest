@@ -2,7 +2,7 @@ module Ramcrest
   module Match
 
     def matches?(actual)
-      match = do_match(actual)
+      match = do_match(@expected, actual)
       if match.matched?
         success
       else
