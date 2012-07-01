@@ -15,17 +15,25 @@ module Ramcrest
         @expected = expected
       end
 
-      def matches?(actual)
+      def do_match(actual)
         match = @expected.matches?(actual.size)
-        if match.matched?
-          success
-        else
-          mismatch("size #{match.description}")
-        end
+      end
+
+      def mismatch_message(actual, match)
+        "size #{match.description}"
       end
 
       def description
         "an enumerable of size #{@expected.description}"
+      end
+
+      def matches?(actual)
+        match = do_match(actual)
+        if match.matched?
+          success
+        else
+          mismatch(mismatch_message(actual, match))
+        end
       end
     end
   end
