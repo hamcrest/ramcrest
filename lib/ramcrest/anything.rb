@@ -9,6 +9,8 @@ module Ramcrest
     end
 
     class Matcher
+      include Ramcrest::Match
+
       def matches?(actual)
         success
       end
@@ -16,8 +18,6 @@ module Ramcrest
       def description
         "anything"
       end
-
-      include Ramcrest::Match
     end
   end
 end
