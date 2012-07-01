@@ -5,18 +5,18 @@ describe Ramcrest::Match do
   include Ramcrest::Match
 
   it "a successful match is equivalent to true" do
-    success.matched?.must_equal true
+    assert_equal true, success.matched?
   end
 
   it "an unsuccessful match is equivalent to false" do
-    mismatch("description").matched?.must_equal false
+    assert_equal false, mismatch("description").matched?
   end
 
   it "an unsuccessful match has a description" do
-    mismatch("description").description.must_equal "description"
+    assert_equal "description", mismatch("description").description
   end
 
   it "a successful match has no description" do
-    success.description.must_be_nil
+    assert_nil success.description
   end
 end
