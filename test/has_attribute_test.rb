@@ -54,8 +54,6 @@ describe Ramcrest::HasAttribute do
   end
 
   def an_object_with_attribute(name, value = nil)
-    obj_with_attr = Object.new
-    obj_with_attr.define_singleton_method(name) { value }
-    obj_with_attr
+    Struct.new(name).new(value)
   end
 end
