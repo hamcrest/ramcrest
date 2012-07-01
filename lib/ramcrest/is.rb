@@ -20,17 +20,25 @@ module Ramcrest
         @expected = expected
       end
 
-      def matches?(actual)
-        match = @expected.matches?(actual)
-        if match.matched?
-          success
-        else
-          mismatch("was <#{match.description}>")
-        end
+      def do_match(actual)
+        @expected.matches?(actual)
+      end
+
+      def mismatch_message(actual, match)
+        "was <#{match.description}>"
       end
 
       def description
         "is <#{@expected.description}>"
+      end
+
+      def matches?(actual)
+        match = do_match(actual)
+        if match.matched?
+          success
+        else
+          mismatch(mismatch_message(actual, match))
+        end
       end
     end
   end
