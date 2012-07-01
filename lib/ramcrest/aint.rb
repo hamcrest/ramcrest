@@ -15,7 +15,7 @@ module Ramcrest
       end
 
       def do_match(expected, actual)
-        expected.matches?(actual).negate!
+        super.negate!
       end
 
       def mismatch_message(actual, match)

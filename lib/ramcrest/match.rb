@@ -1,6 +1,10 @@
 module Ramcrest
   module Match
 
+    def do_match(expected, actual)
+      expected.matches?(actual)
+    end
+
     def matches?(actual)
       match = do_match(@expected, actual)
       if match.matched?
