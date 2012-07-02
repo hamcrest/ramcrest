@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 require 'ramcrest/anything'
 
 module Ramcrest
@@ -10,6 +10,8 @@ module Ramcrest
     end
 
     class Matcher
+      include Ramcrest::Matcher
+
       def initialize(attribute_name, value_matcher)
         @attribute_name = attribute_name
         @value_matcher = value_matcher
@@ -31,8 +33,6 @@ module Ramcrest
       def description
         "an object with an attribute named '#{@attribute_name}' and value #{@value_matcher.description}"
       end
-
-      include Ramcrest::Match
     end
   end
 end

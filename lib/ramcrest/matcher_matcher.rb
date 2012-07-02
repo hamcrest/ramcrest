@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module MatcherMatcher
@@ -16,7 +16,7 @@ module Ramcrest
     end
 
     class MatcherThatMatchesMatcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(value)
         @value = value
@@ -37,7 +37,7 @@ module Ramcrest
     end
 
     class MatcherDescribedAsMatcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(description)
         @description = description
@@ -57,7 +57,7 @@ module Ramcrest
     end
 
     class MatcherThatMismatchesMatcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(value, description)
         @value = value
