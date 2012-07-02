@@ -1,9 +1,9 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module Enumerable
     class BaseEnumerableMatcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(match_type_description, expected, size_matcher)
         @match_type_description = match_type_description

@@ -10,8 +10,6 @@ module Ramcrest
     end
 
     class Matcher < Ramcrest::Enumerable::BaseEnumerableMatcher
-      include Ramcrest::Match
-
       def initialize(expected)
         super("including",
               expected,

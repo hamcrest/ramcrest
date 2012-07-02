@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module Is
@@ -14,19 +14,14 @@ module Ramcrest
     end
 
     class Matcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(expected)
         @expected = expected
       end
 
-      def matches?(actual)
-        match = @expected.matches?(actual)
-        if match.matched?
-          success
-        else
-          mismatch("was <#{match.description}>")
-        end
+      def mismatch_message(actual, match)
+        "was <#{match.description}>"
       end
 
       def description
