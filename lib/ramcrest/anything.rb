@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module Anything
@@ -9,7 +9,7 @@ module Ramcrest
     end
 
     class Matcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def matches?(actual)
         success

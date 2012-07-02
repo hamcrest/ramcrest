@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module Aint
@@ -8,7 +8,7 @@ module Ramcrest
     end
 
     class Matcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(expected)
         @expected = expected

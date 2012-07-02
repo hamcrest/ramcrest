@@ -1,8 +1,8 @@
 require 'minitest/autorun'
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
-describe Ramcrest::Match do
-  include Ramcrest::Match
+describe Ramcrest::Matcher do
+  include Ramcrest::Matcher
 
   it "a successful match is equivalent to true" do
     assert_equal true, success.matched?

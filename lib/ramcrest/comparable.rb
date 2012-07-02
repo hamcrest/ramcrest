@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module Comparable
@@ -21,7 +21,7 @@ module Ramcrest
     end
 
     class Matcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(name, operator, expected)
         @name = name

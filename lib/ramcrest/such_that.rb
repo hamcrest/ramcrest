@@ -1,4 +1,4 @@
-require 'ramcrest/match'
+require 'ramcrest/matcher'
 
 module Ramcrest
   module SuchThat
@@ -9,7 +9,7 @@ module Ramcrest
     end
 
     class Matcher
-      include Ramcrest::Match
+      include Ramcrest::Matcher
 
       def initialize(description, matcher_block)
         singleton = class << self; self; end

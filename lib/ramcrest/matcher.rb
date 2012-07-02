@@ -1,5 +1,5 @@
 module Ramcrest
-  module Match
+  module Matcher
 
     def do_match(expected, actual)
       expected.matches?(actual)
