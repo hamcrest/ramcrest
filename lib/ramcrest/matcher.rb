@@ -28,16 +28,14 @@ module Ramcrest
       def initialize(matched, description = nil)
         @matched = matched
         @description = description
-        @negated = false
       end
 
-      def negate!
-        @negated = true
-        self
+      def negate
+        MatchResult.new(!@matched, @description)
       end
 
       def matched?
-        @negated ? !@matched : @matched
+        @matched
       end
     end
   end

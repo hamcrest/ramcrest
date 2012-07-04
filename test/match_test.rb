@@ -20,10 +20,10 @@ describe Ramcrest::Matcher do
     assert_nil success.description
   end
 
-  describe "#negate!" do
+  describe "#negate" do
     it "inverts the result" do
-      assert_equal false, success.negate!.matched?
-      assert_equal true, mismatch("description").negate!.matched?
+      assert_equal false, success.negate.matched?
+      assert_equal true, mismatch("description").negate.matched?
     end
   end
 end
