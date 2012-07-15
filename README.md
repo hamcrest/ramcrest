@@ -9,9 +9,8 @@ object is not matched (a mismatch description).
 The tests for the various matchers should provide great examples of usage because
 each matcher is actually tested using the Ramcrest framework.
 
-The plan is to integrate this into RSpec so that these matchers can be used in
-RSpec tests. At the moment it is only integrated with MiniTest since that is
-what I grabbed when I started hacking on it.
+There are integrations into MiniTest via `assert_that(actual, matcher)` and 
+into RSpec 2.11 via `expect(actual).that matcher`.
 
 How do I use this?
 ------------------
