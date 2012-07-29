@@ -10,22 +10,33 @@ module Ramcrest
   module_function
 
     def is(expected)
-      Matcher.new(Ramcrest::EqualTo.to_matcher(expected))
+      Matcher.new(Ramcrest::EqualTo.to_matcher(expected), Ramcrest.is_matcher?(expected))
     end
 
     class Matcher
       include Ramcrest::Matcher
 
-      def initialize(expected)
+      def initialize(expected, was_originally_matcher)
         @expected = expected
+        @was_originally_matcher = was_originally_matcher
       end
 
       def mismatch_message(actual, match)
-        "was <#{match.description}>"
+        "was #{show match.description}"
       end
 
       def description
-        "is <#{@expected.description}>"
+        "is #{show @expected.description}"
+      end
+
+    private
+
+      def show(text)
+        if @was_originally_matcher
+          text
+        else
+          "<#{text}>"
+        end
       end
     end
   end

@@ -20,4 +20,14 @@ describe Ramcrest::Is do
   it "describes itself" do
     assert_that is(1), a_matcher_described_as("is <1>")
   end
+
+  describe "when composed with another matcher" do
+    it "describes itself without extra marks" do
+      assert_that is(is(1)), a_matcher_described_as("is is <1>")
+    end
+
+    it "does not describe a mismatch with extra marks" do
+      assert_that is(is(1)), a_matcher_that_mismatches(2, "was was <2>")
+    end
+  end
 end
