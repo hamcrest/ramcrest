@@ -15,7 +15,7 @@ module Ramcrest
     end
 
     def success
-      MatchResult.new(true)
+      MatchResult::SUCCESS
     end
 
     def mismatch(description)
@@ -34,9 +34,27 @@ module Ramcrest
         MatchResult.new(!@matched, @description)
       end
 
+      def or_else(&mismatch_block)
+        if matched?
+          self
+        else
+          yield self
+        end
+      end
+
+      def and_also(&continue_block)
+        if matched?
+          yield
+        else
+          self
+        end
+      end
+
       def matched?
         @matched
       end
+
+      SUCCESS = MatchResult.new(true)
     end
   end
 end
