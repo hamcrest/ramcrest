@@ -99,3 +99,57 @@ frameworks.
 * `Ramcrest::SuchThat` - Ad hoc matchers.
 
         assert_that "my string", such_that { |value| value =~ /string/ ? success : mismatch("didn't contain 'string'") }
+
+Writing your own matchers
+-------------------------
+
+The simplest way to get started writing your own own matchers is to just make
+ad-hoc matchers using `such_that` and chained match results. For example to put
+together a matcher for a certain type that has two properties you can simply
+do:
+
+    def a_token(with_attributes)
+      name = has_attribute(:name, equal_to(with_attributes[:named]))
+      string = has_attribute(:string, equal_to(with_attributes[:string]))
+      description = "a token named <#{with_attributes[:named]}> with string <#{with_attributes[:string]>"
+
+      such_that(description) do |actual|
+        name.matches?(actual).and_also { string.matches?(actual) }
+      end
+    end
+
+Using `such_that` should be able to allow you to write any matcher that you
+want in a simple and straight-forward way. If you outgrow these kinds of
+matchers and want to move onto much larger possiblities, then you just need to
+implement a class with two methods: `matches?(actual)` and `descriptionf`. The
+`matches?` method needs to return either `success` or `mismatch(description)`.
+
+    class AToken
+      include Ramcrest::Matcher
+
+      def initialize(name)
+        @matchers = [Ramcrest::HasAttribute.has_attribute(:name, equal_to(name))]
+      end
+
+      def with_string(string)
+        @matchers << Ramcrest::HasAttribute.has_attribute(:string, equal_to(string))
+        self
+      end
+
+      def matches?(actual)
+        @matchers.
+          collect { |matcher| matcher.matches?(actual) }.
+          find(method(:success)) { |result| !result.matched? }
+      end
+
+      def description
+        "a token that #{@matchers.collect(&:description).join(' and ')}"
+      end
+    end
+
+    def a_token_named(name)
+      AToken.new(name)
+    end
+
+    assert_that something, is(a_token_named("foo").with_string("bar"))
+    assert_that something_else, is(a_token_named("baz"))
