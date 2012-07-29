@@ -14,7 +14,7 @@ describe Ramcrest::SuchThat do
   end
 
   it "describes itself by default as an anonymous matcher" do
-    assert_that such_that { |value| }, a_matcher_described_as("such that <anonymous>")
+    assert_that such_that { |value| }, a_matcher_described_as("<anonymous such_that>")
   end
 
   it "allows for composing with other such_that matchers" do
@@ -27,6 +27,6 @@ describe Ramcrest::SuchThat do
 
   it "can have a description provided" do
     assert_that such_that("something is true") { |value| },
-      a_matcher_described_as("such that something is true")
+      a_matcher_described_as("something is true")
   end
 end
